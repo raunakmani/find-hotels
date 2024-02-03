@@ -2,7 +2,19 @@
 <script>
     let mapToken="<%=process.env.MAP_TOKEN%>";
     let coordinates="<%- JSON.stringify(listing.geometry.coordinates)%>";
-    console.log(coordinates);
+
+    mapboxgl.accessToken=mapToken;
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/mapbox/streets-v12',
+center: JSON.parse(coordinates),  // starting position [lng, lat]
+zoom:10.1, // starting zoom
+});
+console.log(2)
+const marker = new mapboxgl.Marker()
+.setLngLat (JSON.parse(coordinates))
+.addTo(map);
+console.log(marker);
 </script>
 
     <body>
@@ -93,9 +105,9 @@
             <div id="map"></div>
         </div>
         
- <script src="/js/map.js">
+ <!-- <script src="/js/map.js">
   
- </script>
+ </script> -->
    
    
   
